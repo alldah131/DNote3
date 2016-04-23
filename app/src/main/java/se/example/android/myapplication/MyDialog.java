@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class MyDialog extends DialogFragment implements View.OnClickListener{
     Button cancel, discard, save;
+    MainActivity main = new MainActivity();
+
 
 
     @Nullable
@@ -46,6 +48,7 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
         if(view.getId()==R.id.save){
             CheckOutMemo detail = new CheckOutMemo();
             detail.onSaveClick(view);
+
 
         }
     }

@@ -21,7 +21,7 @@ public class CheckOutMemo extends AppCompatActivity {
     private int position;
     EditText editableTitle;
     EditText editableContent;
-
+    DBAdapter myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,26 @@ public class CheckOutMemo extends AppCompatActivity {
         editableContent.setText(intent.getStringExtra("bodyText"));
         checkIfUserChangedOrWroteAnyText();
         position = intent.getIntExtra("position", 0);
+
+        openDB();
     }
+
+
+    private void openDB(){
+        myDb = new DBAdapter(this);
+        myDb.open();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeDB();
+    }
+
+    public void closeDB(){
+        myDb.close();
+    }
+
 
 
     public void onSaveClick(View view) {

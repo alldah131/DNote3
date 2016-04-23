@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     CustomAdapter customAdapter;
     ListView listView;
-    DBAdapter myDb;
     Intent intent;
     final Context context = this;
 
@@ -31,24 +30,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setOnItemLongClickListener(this);
         listView.setOnItemClickListener(this);
 
-        openDB();
 
     }
 
-    private void openDB(){
-        myDb = new DBAdapter(this);
-        myDb.open();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        closeDB();
-    }
-
-    public void closeDB(){
-        myDb.close();
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
