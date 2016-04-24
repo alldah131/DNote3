@@ -29,15 +29,13 @@ class DBAdapter {
     // TODO: Setup your fields here:
     public static final String KEY_HEADER = "header";
     public static final String KEY_CONTEXT = "context";
-    public static final String KEY_FAVCOLOUR = "favcolour";
 
     // TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
     public static final int COL_HEADER = 1;
     public static final int COL_CONTEXT = 2;
-    public static final int COL_FAVCOLOUR = 3;
 
 
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_HEADER, KEY_CONTEXT, KEY_FAVCOLOUR};
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_HEADER, KEY_CONTEXT};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "MyDb";
@@ -60,8 +58,8 @@ class DBAdapter {
                     //  - "not null" means it is a required field (must be given a value).
                     // NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
                     + KEY_HEADER + " text not null, "
-                    + KEY_CONTEXT + " integer not null, "
-                    + KEY_FAVCOLOUR + " string not null"
+                    + KEY_CONTEXT + " text not null, "
+
 
                     // Rest  of creation:
                     + ");";
@@ -93,7 +91,7 @@ class DBAdapter {
     }
 
     // Add a new set of values to the database.
-    public long insertRow(String header, String context, String favColour) {
+    public long insertRow(String header, String context) {
 		/*
 		 * CHANGE 3:
 		 */
@@ -103,7 +101,6 @@ class DBAdapter {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_HEADER, header);
         initialValues.put(KEY_CONTEXT, context);
-        initialValues.put(KEY_FAVCOLOUR, favColour);
 
         // Insert it into the database.
         return db.insert(DATABASE_TABLE, null, initialValues);
@@ -149,7 +146,7 @@ class DBAdapter {
     }
 
     // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String header, int context, String favColour) {
+    public boolean updateRow(long rowId, String header, String context) {
         String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -161,7 +158,7 @@ class DBAdapter {
         ContentValues newValues = new ContentValues();
         newValues.put(KEY_HEADER, header);
         newValues.put(KEY_CONTEXT, context);
-        newValues.put(KEY_FAVCOLOUR, favColour);
+
 
         // Insert it into the database.
         return db.update(DATABASE_TABLE, newValues, where, null) != 0;

@@ -1,5 +1,6 @@
 package se.example.android.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -47,14 +48,9 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
 
         if(view.getId()==R.id.save){
             CheckOutMemo detail = new CheckOutMemo();
+            Toast.makeText(getActivity(), "Save was clicked", Toast.LENGTH_SHORT).show();
             detail.onSaveClick(view);
-
-
         }
     }
-
-
-
-
 }
 

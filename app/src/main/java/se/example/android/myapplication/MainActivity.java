@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Intent intent;
     final Context context = this;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +28,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setAdapter(customAdapter);
         listView.setOnItemLongClickListener(this);
         listView.setOnItemClickListener(this);
-
-
     }
-
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -41,9 +37,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             intent.putExtra("header", memo.header);
             intent.putExtra("bodyText", memo.bodyText);
             intent.putExtra("position", position);
-
+            // launches edit request and saving existing item.
             startActivityForResult(intent, CheckOutMemo.EDIT_REQUEST_CODE);
-
     }
 
 
@@ -77,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void addNewNote(View view){
         Intent intent = new Intent(getApplicationContext(), CheckOutMemo.class);
+        //Adding new listItem to the ArrayList.
         startActivityForResult(intent, CheckOutMemo.ADD_REQUEST_CODE);
     }
 
@@ -105,8 +101,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
-
-
-
-
 }

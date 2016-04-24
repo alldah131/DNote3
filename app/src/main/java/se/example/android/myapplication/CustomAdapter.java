@@ -68,7 +68,4 @@ public class CustomAdapter extends BaseAdapter{
         viewHolder.bodyText.setText(memo.bodyText);
         return convertView;
     }
-
-    private class Bundle {
-    }
 }
