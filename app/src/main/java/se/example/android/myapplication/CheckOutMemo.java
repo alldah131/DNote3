@@ -127,8 +127,39 @@ public class CheckOutMemo extends AppCompatActivity {
 //    }
 
     public void openDialogFragment() {
-        DialogFragment dialog = new MyDialog();
-        dialog.show(this.getSupportFragmentManager(), "MyDialog");
+        Button button = (Button) findViewById(R.id.bigCancelButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CheckOutMemo.this);
+                alertDialogBuilder.setTitle("Save memo before exit?");
+                alertDialogBuilder.setMessage("Save memo before exit?");
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        onSaveClick(v);
+                    }
+                });
+                alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                alertDialogBuilder.setNeutralButton("Discard", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    {
+                        finish();
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                Toast.makeText(CheckOutMemo.this, "WORKED", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void checkIfUserChangedOrWroteAnyText() {
@@ -151,39 +182,7 @@ public class CheckOutMemo extends AppCompatActivity {
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                            Button button = (Button) findViewById(R.id.bigCancelButton);
-                            button.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(final View v) {
-                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
-                                    alertDialogBuilder.setTitle("Save memo before exit?");
-                                    alertDialogBuilder.setMessage("Save memo before exit?");
-                                    alertDialogBuilder.setCancelable(false);
-                                    alertDialogBuilder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            onSaveClick(v);
-                                        }
-                                    });
-                                    alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.cancel();
-                                        }
-                                    });
-                                    alertDialogBuilder.setNeutralButton("Discard", new DialogInterface.OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i)
-                                        {
-                                            finish();
-                                        }
-                                    });
-                                    AlertDialog alertDialog = alertDialogBuilder.create();
-                                    alertDialog.show();
-                                    Toast.makeText(CheckOutMemo.this, "WORKED", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        openDialogFragment();
                         }
                     });
 
@@ -212,39 +211,7 @@ public class CheckOutMemo extends AppCompatActivity {
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                            Button button = (Button) findViewById(R.id.bigCancelButton);
-                            button.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(final View v) {
-                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CheckOutMemo.this);
-                                    alertDialogBuilder.setTitle("Save memo before exit?");
-                                    alertDialogBuilder.setMessage("Save memo before exit?");
-                                    alertDialogBuilder.setCancelable(false);
-                                    alertDialogBuilder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            onSaveClick(v);
-                                        }
-                                    });
-                                    alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.cancel();
-                                        }
-                                    });
-                                    alertDialogBuilder.setNeutralButton("Discard", new DialogInterface.OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i)
-                                        {
-                                            finish();
-                                        }
-                                    });
-                                    AlertDialog alertDialog = alertDialogBuilder.create();
-                                    alertDialog.show();
-                                    Toast.makeText(CheckOutMemo.this, "WORKED", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                            openDialogFragment();
                         }
                     });
 
