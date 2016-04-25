@@ -3,7 +3,6 @@ package se.example.android.myapplication;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -147,7 +146,7 @@ public class CheckOutMemo extends AppCompatActivity {
                         dialogInterface.cancel();
                     }
                 });
-                alertDialogBuilder.setNeutralButton("Discard", new DialogInterface.OnClickListener()
+                alertDialogBuilder.setNegativeButton("Discard", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i)
@@ -225,7 +224,5 @@ public class CheckOutMemo extends AppCompatActivity {
         finish();
         Toast.makeText(CheckOutMemo.this, "Cancel was clicked without any changes made!!!", Toast.LENGTH_SHORT).show();
     }
-
-
 }
 
