@@ -12,7 +12,6 @@ public class CustomAdapter extends BaseAdapter{
 
      ArrayList<Memo> memos = new ArrayList<>();
 
-
     public void add(Memo memo){
         this.memos.add(memo);
     }
