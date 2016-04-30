@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle("Confirm Delete");
-        alertDialogBuilder.setMessage("Sure you want to delete?");
+        alertDialogBuilder.setMessage("Delete memo?");
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override

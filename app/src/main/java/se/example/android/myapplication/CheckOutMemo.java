@@ -86,7 +86,7 @@ public class CheckOutMemo extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-            openDialogFragment(v);
+                openDialogFragment(v);
             }
         });
     }
@@ -121,6 +121,7 @@ public class CheckOutMemo extends AppCompatActivity {
                 });
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+                alertDialog.setCancelable(false);
 
             }
 
@@ -146,7 +147,7 @@ public class CheckOutMemo extends AppCompatActivity {
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                        cancelButtonClickedAfterEdit();
+                            cancelButtonClickedAfterEdit();
                         }
                     });
 
@@ -176,6 +177,7 @@ public class CheckOutMemo extends AppCompatActivity {
                         @Override
                         public void afterTextChanged(Editable s) {
                             cancelButtonClickedAfterEdit();
+
                         }
                     });
 
@@ -185,70 +187,83 @@ public class CheckOutMemo extends AppCompatActivity {
 
     }
 
+
+//
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
+//                && keyCode == KeyEvent.KEYCODE_BACK
+//                && event.getRepeatCount() == 0) {
+//
+//            editableTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                @Override
+//                public void onFocusChange(final View v, final boolean hasFocus) {
+//                    if (hasFocus) {
+//
+//                        editableTitle.addTextChangedListener(new TextWatcher() {
+//                            @Override
+//                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//
+//                            }
+//
+//                            @Override
+//                            public void afterTextChanged(Editable s) {
+//                                openDialogFragment(v);
+//                            }
+//                        });
+//
+//                    }
+//                }
+//            });
+//
+//
+//            editableContent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                @Override
+//                public void onFocusChange(final View v, final boolean hasFocus) {
+//                    if (hasFocus) {
+//
+//                        editableContent.addTextChangedListener(new TextWatcher() {
+//                            @Override
+//                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//
+//                            }
+//
+//                            @Override
+//                            public void afterTextChanged(Editable s) {
+//
+//                                openDialogFragment(v);
+//                            }
+//                        });
+//
+//                    }
+//                }
+//            });
+//
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
+
+
+
+
+
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
-                && keyCode == KeyEvent.KEYCODE_BACK
-                && event.getRepeatCount() == 0) {
-
-            editableTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(final View v, final boolean hasFocus) {
-                    if (hasFocus) {
-
-                        editableTitle.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                            }
-
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-                                openDialogFragment(v);
-                            }
-                        });
-
-                    }
-                }
-            });
-
-
-            editableContent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(final View v, final boolean hasFocus) {
-                    if (hasFocus) {
-
-                        editableContent.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                            }
-
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-                                openDialogFragment(v);
-                            }
-                        });
-
-                    }
-                }
-            });
-
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
+    public void onBackPressed() {
+        openDialogFragment(null);
     }
 
     public void onCancelClick(View view){
