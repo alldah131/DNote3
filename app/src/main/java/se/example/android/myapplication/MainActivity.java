@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -103,4 +102,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
+
+//    (StartActivityForResult)
+//    https://www.youtube.com/watch?v=eV9HfoctYdE
+
+//    (Example of StartActivityResult)
+//    https://github.com/fidesmo/free-otp/blob/master/app/src/main/java/org/fedorahosted/freeotp/MainActivity.java
+
+////    (Developer Android)
+//    http://developer.android.com/training/basics/intents/result.html
 }
